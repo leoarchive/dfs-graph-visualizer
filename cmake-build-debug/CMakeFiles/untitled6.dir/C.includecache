@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Leonardo/CLionProjects/untitled6/main.c
+C:/Users/Leonardo/Documents/GitHub/graphdfs-with-colors/main.c
 stdio.h
 -
 stdlib.h
@@ -14,5 +14,7 @@ stdlib.h
 stdbool.h
 -
 string.h
+-
+windows.h
 -
 

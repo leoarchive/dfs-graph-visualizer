@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Leonardo/CLionProjects/untitled6
+# Install script for directory: C:/Users/Leonardo/Documents/GitHub/graphdfs-with-colors
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Leonardo/CLionProjects/untitled6/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Leonardo/Documents/GitHub/graphdfs-with-colors/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
