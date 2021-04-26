@@ -1,14 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <windows.h>
 
 #define GRAY "\e[47m"
 #define BLACK "\e[0;100m"
 #define WHITE "\e[0;107m"
 #define RESET "\e[0m"
 
-#define INF 999999
+#if defined LINUX
+#define CLEAR "clear"
+#else
+#define CLEAR "cls"
+#endif
 
 #define vertex int
 #define color int
@@ -70,8 +73,6 @@ void GRAPHdfs(GRAPH G) {
     dfsR(G);
 }
 
-int cnt = INF;
-
 void dfsR(GRAPH G) {
     bool end;
     for (int i = 0; i < G->V; ++i) {
@@ -83,49 +84,52 @@ void dfsR(GRAPH G) {
             for (link a = G->adj[i]; a != NULL; a = a->next)
                 a->c = 2;
         }
-
+        system("cls");
     }
 }
 
+int inp[100];
+
 void GRAPHoutput(GRAPH G) {
-    COORD coord;
-    coord.X = 55, coord.Y = 0;
+    int s = 55;
+    int w = 1;
+    int p = 0;
+    int cnt = 0;
     for (int i = 0; i < G->V; ++i) {
-        if (i > cnt + 1)
-            break;
         for (link a = G->adj[i]; a != NULL; a = a->next) {
-            SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-            if (a->c == 1)
-                cnt = i;
-            printf("%s ", colors[a->c]);
-            for (int j = 0; j < coord.Y; ++j)
-                printf("%s ", colors[a->c]);
-            for (int j = coord.Y; j > 0; --j)
+            printf("%d -- %d", inp[p], inp[p+1]);
+            p+=2;
+            if (cnt++ == 10)
+                s--;
+            for (int j = 0; j < s; ++j)
+                printf(" ");
+            for (int j = 0; j < w; ++j)
                 printf("%s ", colors[a->c]);
             printf(RESET);
-            coord.X--, coord.Y++;
-            Sleep(50);
+            w += 2, s--;
+            _sleep(50);
+            puts("");
         }
     }
 }
 
 int main(void) {
-    system("cls");
+    system(CLEAR);
     GRAPH G = GRAPHinit(10);
     int k = 0;
     int c = 0;
+    int cnt = 0;
     for (int i = 0; i < 10; ++i) {
         for (int j = k; j < 45; ++j, ++c) {
             if (c == i)
                 break;
             GRAPHinsertArc(G, i, j);
-            printf("%d - %d\n", i, j);
+            inp[cnt++] = i, inp[cnt++] = j;
             k = j + 1;
         }
         c = 0;
     }
     GRAPHdfs(G);
-    cnt = INF;
     GRAPHoutput(G);
     puts("");
     getchar();
