@@ -13,8 +13,6 @@ stdlib.h
 -
 stdbool.h
 -
-string.h
--
 windows.h
 -
 
