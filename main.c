@@ -84,7 +84,7 @@ void dfsR(GRAPH G) {
             for (link a = G->adj[i]; a != NULL; a = a->next)
                 a->c = 2;
         }
-        system("cls");
+        system(CLEAR);
     }
 }
 
