@@ -2,19 +2,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define GRAY "\e[90m"
-#define BLACK "\e[30m"
-#define WHITE "\e[97m"
-#define RESET "\e[0m"
+#define GRAY	"\e[90m"
+#define BLACK	"\e[30m"
+#define WHITE	"\e[97m"
+#define RESET	"\e[0m"
 
-#if defined LINUX
-#define CLEAR "clear"
-#else
-#define CLEAR "cls"
-#endif
-
-#define vertex int
-#define color int
+#define vertex	int
+#define color	int
 
 char *colors[] = {WHITE,GRAY,BLACK};
 
@@ -97,7 +91,6 @@ void GRAPHoutput(GRAPH G) {
 }
 
 int main(void) {
-	system(CLEAR);
 	GRAPH G = GRAPHinit(10);
 	GRAPHinsertArc(G, 0, 1);
 	GRAPHinsertArc(G, 1, 2);
@@ -109,6 +102,5 @@ int main(void) {
 	GRAPHinsertArc(G, 4, 8);
 	GRAPHdfs(G);
 	GRAPHoutput(G);
-	getchar();
 	return 0;
 }
